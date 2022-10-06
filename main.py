@@ -20,3 +20,20 @@ async def primo(is_primo_id:int):
         return {"changed": True, "msg": "Es primo"}
     else:
         return {"changed": False, "msg": "No es primo"}
+
+@app.get("/fibonacci/{item_id}")
+async def read_fibonacci(pos: int):
+    if pos<1:
+        return{"Error": "Posición inválida"}
+    if pos==1:
+        return {"fibonacci": 0}
+    if pos==2:
+        return {"fibonacci": 1}
+    ant=0
+    sig=1
+    for i in range(pos-2):     
+        num=ant+sig
+        ant=sig
+        sig=num
+      
+    return {"fibonacci": sig}
